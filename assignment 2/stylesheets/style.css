@@ -1,0 +1,182 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    background:#000;
+    color:#fff;
+    font-family:'Manrope',sans-serif;
+}
+
+.container{
+    width:100vw;
+    height:100vh;
+    padding:1.6vw 3.5vw;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    padding:30px;
+    height:14%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:.7vw;
+}
+
+.logo-icon{
+    width:2vw;
+}
+
+.logo-text{
+    font-size:1.9vw;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:3.2vw;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#E7E7E7;
+    font-size:1.1vw;
+    font-weight:500;
+}
+
+.btn-get-started{
+    border:none;
+    color:#fff;
+    background:#111;
+    padding:1vw 1.7vw;
+    border-radius:.9vw;
+    font-size:1vw;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:100%;
+    height:32%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3vw;
+}
+
+.hero-title{
+    font-size:8vw;
+    line-height:1;
+    font-weight:800;
+}
+
+.filter-pills{
+    display:flex;
+    align-items:center;
+    gap:1vw;
+}
+
+.pill{
+    border:none;
+    background:#161616;
+    color:#EAEAEA;
+    padding:.7vw 1.2vw;
+    border-radius:999px;
+    font-size:1vw;
+    cursor:pointer;
+    font-weight:600;
+    margin-bottom:3vw;
+}
+
+.pill.active{
+    background:#FF5A0A;
+}
+
+/* ================= CARDS ================= */
+
+.cards-section{
+    width:100%;
+    height:50%;
+    display:flex;
+    justify-content:center;
+    gap:1.5vw;
+}
+
+.card{
+    width:25%;
+    height:100%;
+    background:#141414;
+    border-radius:25px;
+    overflow:hidden;
+}
+
+.card-image{
+    width:100%;
+    height:58%;
+        border-radius:25px;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.card-body{
+    width:100%;
+    height:47%;
+    padding:1.5vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+
+.tag{
+    width:fit-content;
+    padding:.6vw 1.2vw;
+    border-radius:999px;
+    background:#2A130A;
+    color:#FF7B39;
+    font-size:.7vw;
+    font-weight:600;
+    margin-bottom:1vw;
+}
+
+.card-title{
+    font-size:1vw;
+    line-height:1;
+    font-weight:700;
+    margin-bottom:1vw;
+    color:#F5F5F5;
+}
+
+.card-date{
+    font-size:1vw;
+    color:#777;
+}
+
+/* ================= IMAGE PATHS ================= */
+
