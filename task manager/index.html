@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DOM Explorer — Task Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="logo-mark">&lt;/&gt;</span>
+      <div>
+        <h1>DOM Explorer</h1>
+        <p class="subtitle">a task manager built on raw DOM APIs</p>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div class="stat-pill" id="pendingCount" data-count="0">
+        <span class="stat-num">0</span><span class="stat-label">pending</span>
+      </div>
+      <div class="stat-pill stat-done" id="completedCount" data-count="0">
+        <span class="stat-num">0</span><span class="stat-label">done</span>
+      </div>
+
+      
+      <button id="themeToggle" class="theme-toggle" data-theme-state="dark" aria-label="Toggle theme">
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    
+    <section class="panel panel-main">
+
+      
+      <form id="taskForm" class="task-form">
+        <input
+          type="text"
+          id="taskTitle"
+          class="input-title"
+          placeholder="What needs doing?"
+          autocomplete="off"
+          required
+        />
+        <select id="taskCategory" class="input-category">
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="study">Study</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button type="submit" class="btn-add">+ Add Task</button>
+      </form>
+
+      
+      <div class="toolbar">
+        <input type="text" id="searchInput" class="input-search" placeholder="Search tasks…" />
+        <select id="filterCategory" class="input-filter">
+          <option value="all">All categories</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="study">Study</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button id="clearAllBtn" class="btn-clear" type="button">Clear all</button>
+      </div>
+
+      
+      <ul id="taskList" class="task-list" aria-live="polite">
+        
+      </ul>
+
+      <p id="emptyState" class="empty-state">No tasks yet — add your first one above.</p>
+    </section>
+
+    
+    <aside class="panel panel-side">
+
+      
+      <div class="card demo-card">
+        <h2 class="card-title">Event Propagation</h2>
+        <p class="card-desc">Click the button. Watch the console log the order for both phases.</p>
+
+        <div id="grandparent" class="prop-box prop-grandparent">
+          Grandparent
+          <div id="parent" class="prop-box prop-parent">
+            Parent
+            <button id="childBtn" class="prop-box prop-child">Child Button</button>
+          </div>
+        </div>
+
+        <div class="prop-toggle">
+          <label class="switch-label">
+            <input type="checkbox" id="captureToggle" />
+            Log capturing phase instead of bubbling
+          </label>
+        </div>
+        <div id="propLog" class="prop-log">console output appears here →</div>
+      </div>
+
+      
+      <div class="card demo-card">
+        <h2 class="card-title">Attribute vs Property</h2>
+        <p class="card-desc">Type below. See how the live property differs from the static HTML attribute.</p>
+        <input type="text" id="attrDemoInput" class="input-attr-demo" value="edit me" />
+        <div class="attr-readout">
+          <div><span class="mono">input.value</span> → <span id="propValue" class="mono value-chip">edit me</span></div>
+          <div><span class="mono">input.getAttribute("value")</span> → <span id="attrValue" class="mono value-chip">edit me</span></div>
+        </div>
+        <button id="syncAttrBtn" class="btn-clear" type="button" style="margin-top:10px;">
+          setAttribute("value", …) to sync
+        </button>
+      </div>
+
+    </aside>
+  </main>
+
+  
+  <section class="panel panel-pipeline">
+    <h2 class="card-title">Browser Rendering Pipeline</h2>
+    <p class="card-desc">How your HTML and CSS above actually become pixels on screen.</p>
+
+    <div class="pipeline">
+      <div class="pipe-track">
+        <div class="pipe-node" data-step="1">
+          <span class="pipe-index">01</span>
+          <h3>HTML</h3>
+          <p>Raw markup arrives from the network as a stream of bytes.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node" data-step="2">
+          <span class="pipe-index">02</span>
+          <h3>Parsing</h3>
+          <p>The browser reads the byte stream and converts characters into meaning.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node" data-step="3">
+          <span class="pipe-index">03</span>
+          <h3>Tokenization</h3>
+          <p>Characters are grouped into tokens: start tags, end tags, text, attributes.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node pipe-highlight" data-step="4">
+          <span class="pipe-index">04</span>
+          <h3>DOM Tree</h3>
+          <p>Tokens become nodes, nested into the tree this whole app manipulates.</p>
+        </div>
+      </div>
+
+      <div class="pipe-track pipe-track-css">
+        <div class="pipe-node" data-step="css1">
+          <span class="pipe-index">CSS</span>
+          <h3>Stylesheets</h3>
+          <p>style.css and any inline styles are parsed the same way HTML is.</p>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-node pipe-highlight" data-step="css2">
+          <span class="pipe-index">05</span>
+          <h3>CSSOM Tree</h3>
+          <p>Selectors and rules become a tree of computed styles.</p>
+        </div>
+      </div>
+
+      <div class="pipe-merge">
+        <div class="pipe-merge-line"></div>
+        <div class="pipe-node pipe-final" data-step="6">
+          <span class="pipe-index">06</span>
+          <h3>Render Tree</h3>
+          <p>DOM + CSSOM combine — only visible nodes survive, each carrying its final style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Cohort 3.0 · DOM Explorer Assignment · Built with vanilla HTML, CSS &amp; JavaScript — no frameworks.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
