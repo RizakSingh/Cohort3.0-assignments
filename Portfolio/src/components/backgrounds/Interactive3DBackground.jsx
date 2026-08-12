@@ -2,20 +2,10 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { useMousePosition } from '@/hooks/useMousePosition'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { isLowPowerDevice } from '@/utils/deviceCapability'
 import FallbackGrid from './FallbackGrid'
 
 const Scene = lazy(() => import('@/three/Scene'))
-
-// A rough, conservative signal for weak hardware — low core count reliably
-// correlates with budget/older devices that struggle with a continuous
-// WebGL render loop. False negatives (a strong device reporting low count)
-// just mean it gets the still-good CSS fallback, never a broken page.
-function isLowPowerDevice() {
-  if (typeof navigator === 'undefined') return false
-  if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) return true
-  if (navigator.deviceMemory && navigator.deviceMemory <= 4) return true
-  return false
-}
 
 /**
  * The living 3D digital environment behind every page (spec §3/§4).

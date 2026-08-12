@@ -3,6 +3,8 @@ import { useGsap } from '@/hooks/useGsap'
 import { revealLines } from '@/animations/typography'
 import ShrinkHeading from '@/components/typography/ShrinkHeading'
 import SectionLabel from '@/components/sections/SectionLabel'
+import AvatarFloat from '@/components/3d/AvatarFloat'
+import avatarHero from '@/assets/avatar-hero.png'
 
 const HEADLINE = ['I BUILD', 'PRODUCTS', 'THAT FEEL', 'SIMPLE.']
 
@@ -18,35 +20,41 @@ export default function Introduction() {
   paraLines.current = []
 
   const scope = useGsap(() => {
-    revealLines(paraLines.current, { trigger: scope.current, stagger: 0.12 })
+    revealLines(paraLines.current, { trigger: scope.current, stagger: 0.12, immediate: true })
   }, [])
 
   return (
     <section ref={scope} className="relative border-t border-line px-6 py-28 md:px-10 md:py-40">
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-14">
-        <SectionLabel index="01" title="Introduction" />
+      <div className="mx-auto flex max-w-[1600px] flex-col items-center gap-14 lg:flex-row lg:gap-16">
+        <div className="flex min-w-0 flex-1 flex-col gap-14">
+          <SectionLabel index="01" title="Introduction" />
 
-        <ShrinkHeading
-          lines={HEADLINE}
-          size="section"
-          triggerRef={scope}
-          endScale={0.85}
-          end="+=60%"
-        />
+          <ShrinkHeading
+            lines={HEADLINE}
+            size="section"
+            triggerRef={scope}
+            endScale={0.85}
+            end="+=60%"
+          />
 
-        <div className="max-w-2xl">
-          {PARAGRAPH.map((line, i) => (
-            <span className="mask-line" key={i}>
-              <span
-                ref={(el) => {
-                  if (el) paraLines.current[i] = el
-                }}
-                className="inline-block font-body text-lg text-muted md:text-xl"
-              >
-                {line}
+          <div className="max-w-2xl">
+            {PARAGRAPH.map((line, i) => (
+              <span className="mask-line" key={i}>
+                <span
+                  ref={(el) => {
+                    if (el) paraLines.current[i] = el
+                  }}
+                  className="inline-block font-body text-lg text-muted md:text-xl"
+                >
+                  {line}
+                </span>
               </span>
-            </span>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        <div className="w-48 shrink-0 sm:w-64 lg:w-[280px] xl:w-[340px]">
+          <AvatarFloat avatarSrc={avatarHero} accent="#6e56cf" />
         </div>
       </div>
     </section>

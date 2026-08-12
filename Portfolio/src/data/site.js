@@ -6,6 +6,7 @@ export const site = {
   github: 'https://github.com/RizakSingh',
   githubHandle: 'github.com/RizakSingh',
   linkedin: 'https://www.linkedin.com/in/rizakdeep-singh-8013681a1/',
+  resume: 'https://drive.google.com/file/d/1AQ11gS_0tCR-3XY36Vv0yosshijBtCK6/view?usp=sharing',
   status: 'Available for work',
   focus: ['Web', 'Full Stack', 'AI', 'Creative Development'],
 }

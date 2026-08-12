@@ -1,11 +1,14 @@
 import { useRef, useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowUpRight } from 'lucide-react'
 import { site } from '@/data/site'
 import { useGsap } from '@/hooks/useGsap'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { introAlreadyPlayed } from '@/utils/intro'
 import ShrinkHeading from '@/components/typography/ShrinkHeading'
 import { staggerReveal } from '@/animations/scroll'
+import MagneticButton from '@/components/buttons/MagneticButton'
+import AvatarFloat from '@/components/3d/AvatarFloat'
+import avatarIntro from '@/assets/avatar-intro.png'
 
 // Timed to land just as the loading sequence lifts (~1.6s) — a fixed,
 // one-shot schedule rather than something re-triggered by React state,
@@ -45,31 +48,59 @@ export default function Hero() {
 
   return (
     <section ref={scope} className="relative flex min-h-svh flex-col justify-between px-6 pb-10 pt-28 md:px-10 md:pt-32">
-      <div className="flex flex-1 flex-col justify-center">
-        <div ref={badgeRef} className="mb-6 flex items-center gap-3 md:mb-10">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-          </span>
-          <span className="font-display text-xs uppercase tracking-[0.2em] text-muted">
-            {site.status}
-          </span>
+      <div className="flex flex-1 flex-col items-center gap-10 lg:flex-row lg:gap-14">
+        <div className="order-2 flex min-w-0 flex-1 flex-col justify-center lg:order-1">
+          <div ref={badgeRef} className="mb-6 flex items-center gap-3 md:mb-10">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <span className="font-display text-xs uppercase tracking-[0.2em] text-muted">
+              {site.status}
+            </span>
+          </div>
+
+          <ShrinkHeading
+            lines={HEADLINE}
+            size="heroSplit"
+            delay={headingDelay}
+            triggerRef={scope}
+            end="+=140%"
+            immediate
+          />
+
+          <div ref={metaRef} className="mt-10 flex flex-col gap-8">
+            <p className="max-w-md font-body text-sm uppercase tracking-[0.14em] text-muted md:text-base">
+              {site.focus.join(' • ')}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <MagneticButton
+                as="a"
+                href={site.resume}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="click"
+                className="group flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-display text-sm font-medium uppercase tracking-widest text-bg transition-colors"
+              >
+                Hire Me
+                <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </MagneticButton>
+
+              <MagneticButton
+                as="a"
+                href="#selected-work"
+                data-cursor="view"
+                className="flex items-center gap-2 rounded-full border border-line px-6 py-3 font-display text-sm uppercase tracking-widest text-text transition-colors hover:border-accent"
+              >
+                View Work
+              </MagneticButton>
+            </div>
+          </div>
         </div>
 
-        <ShrinkHeading
-          lines={HEADLINE}
-          size="hero"
-          delay={headingDelay}
-          triggerRef={scope}
-          end="+=140%"
-          immediate
-        />
-
-        <div ref={metaRef} className="mt-10 flex flex-col gap-4 md:mt-14 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-md font-body text-sm uppercase tracking-[0.14em] text-muted md:text-base">
-            {site.focus.join(' • ')}
-          </p>
-          <p className="font-display text-sm tracking-[0.1em] text-muted">{site.name.toUpperCase()}</p>
+        <div className="order-1 w-40 shrink-0 sm:w-56 lg:order-2 lg:w-[260px] xl:w-[320px]">
+          <AvatarFloat avatarSrc={avatarIntro} accent="#6e56cf" />
         </div>
       </div>
 

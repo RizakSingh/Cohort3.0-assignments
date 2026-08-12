@@ -148,6 +148,7 @@ export const projects = [
     demoUrl: 'https://cohort3-0-assignments-3ppj.vercel.app/',
     githubUrl: 'https://github.com/RizakSingh/Cohort3.0-assignments/tree/main/super%20mart',
     accent: '#C97B4A',
+    image: '/projects/havn.png',
     featured: true,
   },
   {
@@ -198,6 +199,7 @@ export const projects = [
     demoUrl: 'https://cohort3-0-assignments-frov.vercel.app/',
     githubUrl: 'https://github.com/RizakSingh/Cohort3.0-assignments/tree/main/productivity%20dashboard',
     accent: '#7BAE7F',
+    image: '/projects/nova.png',
     featured: true,
   },
   {
@@ -243,6 +245,7 @@ export const projects = [
     demoUrl: 'https://cohort3-0-assignments-i33a.vercel.app/',
     githubUrl: 'https://github.com/RizakSingh/Cohort3.0-assignments/tree/main/finance%20tracker',
     accent: '#C9A15A',
+    image: '/projects/fintrack-pro.png',
     featured: true,
   },
   {
@@ -283,51 +286,10 @@ export const projects = [
       'One listener handles every task interaction, regardless of list size',
       'README doubles as a written explainer of DOM event internals',
     ],
+    demoUrl: 'https://cohort3-0-assignments-68f8.vercel.app/',
     githubUrl: 'https://github.com/RizakSingh/Cohort3.0-assignments/tree/main/task%20manager',
     accent: '#8B7BC9',
-    featured: false,
-  },
-  {
-    slug: 'tea-co',
-    index: '07',
-    title: 'Tea Co.',
-    shortTitle: 'Brand Landing Page',
-    year: '2025',
-    category: ['EXPERIMENTAL'],
-    tagline: 'A static, image-heavy brand site built for pixel-level responsive craft.',
-    summary:
-      'A static marketing/catalog page for a tea brand — pure HTML and CSS, no JavaScript, built as a responsive-design exercise across a real image-heavy layout.',
-    overview:
-      'Tea Co. is a static landing page exercise: a full brand site (hero, product showcase, about section, footer) built with hand-written HTML and over 1,200 lines of CSS, no JavaScript and no framework, focused entirely on responsive layout craft with real product photography.',
-    problem:
-      'Responsive layout skills are easiest to fake with a CSS framework doing the work — this was built to prove the underlying CSS (grid, flexbox, breakpoints, art-directed images) without one.',
-    solution:
-      'Hand-authored a 1,200+ line stylesheet across a 576-line semantic HTML document, using modern image formats (WebP/AVIF) with SVG for iconography and branding, tuned across breakpoints for a real multi-section marketing layout.',
-    features: [
-      'Full brand landing page: hero, product showcase, about, footer',
-      'Real product photography in WebP / AVIF',
-      'Hand-written responsive layout, no CSS framework',
-      'SVG iconography and branding',
-    ],
-    tech: ['HTML5', 'CSS3'],
-    architecture: {
-      nodes: [
-        { id: 'html', label: 'Semantic HTML', sub: '576 lines', col: 1, row: 0 },
-        { id: 'css', label: 'Responsive CSS', sub: '1,200+ lines', col: 1, row: 1 },
-        { id: 'assets', label: 'WebP / AVIF / SVG', sub: 'Art-directed imagery', col: 1, row: 2 },
-      ],
-      edges: [
-        { from: 'html', to: 'css' },
-        { from: 'css', to: 'assets', label: 'breakpoint-tuned' },
-      ],
-    },
-    results: [
-      '23 real image assets across modern formats, no framework dependency',
-      'Fully hand-authored responsive breakpoints',
-    ],
-    githubUrl: 'https://github.com/RizakSingh/Cohort3.0-assignments/tree/main/responsive%20website',
-    accent: '#9C8A5C',
-    image: '/projects/tea-co.webp',
+    image: '/projects/dom-explorer.png',
     featured: false,
   },
 ]

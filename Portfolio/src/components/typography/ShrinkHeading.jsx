@@ -17,12 +17,13 @@ export default function ShrinkHeading({
   delay = 0,
   endScale = 0.55,
   end = '+=120%',
-  immediate = false,
+  immediate = true,
 }) {
   const wrapperRef = useRef(null)
 
   const sizes = {
     hero: 'text-[clamp(3.2rem,13vw,11rem)]',
+    heroSplit: 'text-[clamp(2.8rem,9vw,9rem)]',
     section: 'text-[clamp(2.4rem,8vw,6.5rem)]',
   }
 
