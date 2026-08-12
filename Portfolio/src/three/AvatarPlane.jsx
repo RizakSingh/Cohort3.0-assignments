@@ -3,11 +3,13 @@ import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 /**
- * The avatar itself, rendered as a circular textured plane inside the R3F
- * scene (a real 3D object, not an HTML overlay) so it can sit inside the
- * same space as the orbit rings and tilt/bob with them.
+ * The avatar itself, rendered as a textured plane inside the R3F scene (a
+ * real 3D object, not an HTML overlay) so it can sit inside the same space
+ * as the orbit rings and tilt/bob with them. Shown at its native square
+ * framing — the source art's own circular border and glow stay intact
+ * rather than being re-cropped, which reads richer than a clipped version.
  */
-export default function AvatarPlane({ src, radius = 1.4 }) {
+export default function AvatarPlane({ src, size = 5.5 }) {
   const texture = useTexture(src)
   const ref = useRef(null)
 
@@ -19,7 +21,7 @@ export default function AvatarPlane({ src, radius = 1.4 }) {
   return (
     <group ref={ref}>
       <mesh>
-        <circleGeometry args={[radius, 64]} />
+        <planeGeometry args={[size, size]} />
         <meshBasicMaterial map={texture} transparent toneMapped={false} />
       </mesh>
     </group>

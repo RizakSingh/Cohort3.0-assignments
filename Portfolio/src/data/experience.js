@@ -1,39 +1,35 @@
-/**
- * A build-history timeline rather than a fabricated employment history —
- * grounded in the actual shipping record across this developer's repos.
- */
 export const experience = [
   {
-    year: '2025',
-    title: 'Foundations',
-    period: 'Early 2025',
+    year: '2022',
+    title: 'Bachelor of Computer Applications',
+    period: 'Gujarwala Guru Nanak Institute of Management and Technology',
     description:
-      'Started from the DOM up — vanilla JavaScript, DSA practice, and framework-free builds like a delegated-event task manager, a finance tracker and a productivity dashboard wired to live weather and quote APIs.',
-    tags: ['JavaScript', 'DSA', 'DOM Internals', 'REST APIs'],
+      'BCA — the foundation for everything that followed: core CS, DSA, and the first exposure to building real software rather than just studying it.',
+    tags: ['Computer Applications', 'DSA'],
   },
   {
     year: '2025',
-    title: 'Motion & Frontend Craft',
-    period: 'Mid 2025',
+    title: 'Frontend Developer Intern — Springer Capital',
+    period: 'Aug 2025 – Oct 2025 · Remote',
     description:
-      'Moved into animation and component architecture — GSAP-driven sites, a Redux Toolkit deep dive, and a responsive brand landing page built without any CSS framework.',
-    tags: ['GSAP', 'React', 'Redux Toolkit', 'Responsive CSS'],
-  },
-  {
-    year: '2025',
-    title: 'React Ecosystem',
-    period: 'Late 2025',
-    description:
-      'Shipped Havn, a front-end e-commerce app on React 19 and React Router v7\'s data router — catalog, cart and checkout state modeled with Context, no backend required.',
-    tags: ['React 19', 'React Router', 'Context API', 'Tailwind CSS'],
+      'Built 15+ responsive, production-grade React.js UI components alongside design and backend teams. Reduced UI-related defects by 25% by integrating REST APIs and optimizing state with Redux and React hooks, and cut client-side load time by 35% through code-splitting and re-render optimization.',
+    tags: ['React.js', 'Redux', 'REST APIs', 'Code-splitting'],
   },
   {
     year: '2026',
-    title: 'Full Stack & AI',
-    period: '2026',
+    title: 'Software Developer — Unyfer Inc.',
+    period: 'Feb 2026 – Present · Remote',
     description:
-      'Went full stack: MERN apps with real authentication and role-based access (Employee Management System), plus an AI-powered image platform (Enhanso) integrating a paid third-party AI API behind a secured Express backend.',
-    tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'AI Integration'],
+      'Shipping production features for a live web and mobile app serving 10,000+ active users. Built and maintained the mobile app frontend end-to-end with React Native, cutting duplicate UI code 30% through reusable component architecture, and resolving an average of 8 production defects per sprint across an Agile team.',
+    tags: ['React.js', 'React Native', 'Node.js', 'Express.js'],
+  },
+  {
+    year: '2026',
+    title: 'Certifications',
+    period: 'Apna College · Upgrad',
+    description:
+      'Full Stack Web Development Certification (Apna College) — hands-on MERN stack, DSA and production-grade project work. Generative AI Foundations Certification (Upgrad) — LLMs, prompt engineering and applied Generative AI workflows.',
+    tags: ['MERN Stack', 'LLMs', 'Prompt Engineering'],
   },
   {
     year: '2026',

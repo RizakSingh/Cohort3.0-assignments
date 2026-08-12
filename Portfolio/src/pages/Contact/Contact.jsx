@@ -8,6 +8,7 @@ import CopyEmailButton from '@/components/buttons/CopyEmailButton'
 const LINKS = [
   { label: 'GitHub', href: site.github, meta: site.githubHandle },
   { label: 'LinkedIn', href: site.linkedin, meta: 'in/rizakdeep-singh' },
+  { label: 'Phone', href: `tel:${site.phone.replace(/\s/g, '')}`, meta: site.phone },
 ]
 
 const HEADLINE = ["LET'S BUILD", 'SOMETHING', 'GREAT.']
@@ -24,6 +25,7 @@ export default function Contact() {
         </div>
 
         <RevealText as="p" lines={SUBTEXT} className="mt-10 max-w-xl font-body text-lg text-muted" />
+        <p className="mt-4 font-display text-xs uppercase tracking-[0.14em] text-muted">{site.location}</p>
 
         <div className="mt-12 flex flex-wrap items-center gap-6">
           <MagneticButton

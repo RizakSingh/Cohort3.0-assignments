@@ -44,15 +44,17 @@ export const projects = [
       ],
     },
     results: [
+      'Cut a multi-step image-editing task down to a single click',
+      'JWT auth with user-scoped cloud storage — 0 unauthorized data-access incidents across testing',
+      'Async request queuing lowered average response latency by 40% as usage scaled',
       'Independently deployed frontend (Vercel) and backend (Render) talking over a versioned REST API',
-      'Zero client-side exposure of the paid AI API key',
-      '4 distinct AI operations wired end-to-end, from upload to processed result',
     ],
     challenges:
       'The PicWish API is asynchronous and metered on a paid/free-tier key, so the backend has to queue the task, poll for completion and surface a clean loading/error state to the client without leaking provider-specific errors — while keeping cold starts on the free Render tier from breaking the UX.',
     demoUrl: 'https://enhanso-ai-image-enhancer.vercel.app',
     githubUrl: 'https://github.com/RizakSingh/Enhanso-Ai-Image-Enhancer-',
     accent: '#6E56CF',
+    image: '/projects/enhanso.png',
     featured: true,
   },
   {
@@ -93,8 +95,9 @@ export const projects = [
       ],
     },
     results: [
+      'Automated task allocation on a custom MongoDB schema, cutting manual assignment time by 50%',
+      'JWT-based access control enforced across 3 permission tiers platform-wide',
       'Two functionally distinct dashboards sharing one authenticated API',
-      'Server-enforced role boundaries, not just conditional UI rendering',
       'Deployed frontend + backend, demo credentials available for reviewers',
     ],
     challenges:
@@ -102,6 +105,7 @@ export const projects = [
     demoUrl: 'https://employee-management-system-drab-seven.vercel.app/',
     githubUrl: 'https://github.com/RizakSingh/Employee-management-system-',
     accent: '#4F8A8B',
+    image: '/projects/employee-management-system.png',
     featured: true,
   },
   {

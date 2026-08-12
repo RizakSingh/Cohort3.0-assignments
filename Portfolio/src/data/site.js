@@ -1,8 +1,9 @@
 export const site = {
   name: 'Rizakdeep Singh',
-  role: 'Full Stack & Creative Developer',
-  location: 'India',
+  role: 'Full Stack Developer',
+  location: 'Ludhiana, Punjab, India',
   email: 'srizak95@gmail.com',
+  phone: '+91 98885 40167',
   github: 'https://github.com/RizakSingh',
   githubHandle: 'github.com/RizakSingh',
   linkedin: 'https://www.linkedin.com/in/rizakdeep-singh-8013681a1/',

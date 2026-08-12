@@ -39,7 +39,7 @@ export default function ProjectVisual({ project, className = '' }) {
           src={project.image}
           alt={`${project.title} — ${project.shortTitle}`}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       ) : (
         <svg viewBox="0 0 480 300" className="h-full w-full" preserveAspectRatio="xMidYMid slice">

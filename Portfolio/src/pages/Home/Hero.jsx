@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ChevronDown, ArrowUpRight } from 'lucide-react'
 import { site } from '@/data/site'
 import { useGsap } from '@/hooks/useGsap'
@@ -8,7 +9,7 @@ import ShrinkHeading from '@/components/typography/ShrinkHeading'
 import { staggerReveal } from '@/animations/scroll'
 import MagneticButton from '@/components/buttons/MagneticButton'
 import AvatarFloat from '@/components/3d/AvatarFloat'
-import avatarIntro from '@/assets/avatar-intro.png'
+import avatarIntro from '@/assets/avtar.png'
 
 // Timed to land just as the loading sequence lifts (~1.6s) — a fixed,
 // one-shot schedule rather than something re-triggered by React state,
@@ -88,8 +89,8 @@ export default function Hero() {
               </MagneticButton>
 
               <MagneticButton
-                as="a"
-                href="#selected-work"
+                as={Link}
+                to="/work"
                 data-cursor="view"
                 className="flex items-center gap-2 rounded-full border border-line px-6 py-3 font-display text-sm uppercase tracking-widest text-text transition-colors hover:border-accent"
               >
@@ -99,7 +100,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="order-1 w-40 shrink-0 sm:w-56 lg:order-2 lg:w-[260px] xl:w-[320px]">
+        <div className="order-1 mt-8 flex w-56 shrink-0 items-center justify-center self-center sm:w-72 lg:order-2 lg:mt-0 lg:w-[420px] xl:w-[520px]">
           <AvatarFloat avatarSrc={avatarIntro} accent="#6e56cf" />
         </div>
       </div>

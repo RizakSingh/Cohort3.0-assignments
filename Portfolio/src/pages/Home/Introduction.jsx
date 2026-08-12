@@ -4,7 +4,7 @@ import { revealLines } from '@/animations/typography'
 import ShrinkHeading from '@/components/typography/ShrinkHeading'
 import SectionLabel from '@/components/sections/SectionLabel'
 import AvatarFloat from '@/components/3d/AvatarFloat'
-import avatarHero from '@/assets/avatar-hero.png'
+import avatarHero from '@/assets/avatar2.png'
 
 const HEADLINE = ['I BUILD', 'PRODUCTS', 'THAT FEEL', 'SIMPLE.']
 
@@ -53,7 +53,7 @@ export default function Introduction() {
           </div>
         </div>
 
-        <div className="w-48 shrink-0 sm:w-64 lg:w-[280px] xl:w-[340px]">
+        <div className="flex w-56 shrink-0 items-center justify-center self-center sm:w-72 lg:w-[380px] xl:w-[460px]">
           <AvatarFloat avatarSrc={avatarHero} accent="#6e56cf" />
         </div>
       </div>

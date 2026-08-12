@@ -19,7 +19,7 @@ function Ring({ radius, tilt, speed, color, opacity, thickness = 0.012 }) {
   )
 }
 
-function OrbitDot({ radius, tilt, speed, offset, color }) {
+function OrbitDot({ radius, tilt, speed, offset, color, size = 0.035 }) {
   const ref = useRef(null)
 
   useFrame(({ clock }) => {
@@ -31,7 +31,7 @@ function OrbitDot({ radius, tilt, speed, offset, color }) {
   return (
     <group rotation={[tilt.x, tilt.y, 0]}>
       <mesh ref={ref}>
-        <sphereGeometry args={[0.035, 12, 12]} />
+        <sphereGeometry args={[size, 12, 12]} />
         <meshBasicMaterial color={color} toneMapped={false} />
       </mesh>
     </group>
@@ -44,23 +44,23 @@ function OrbitDot({ radius, tilt, speed, offset, color }) {
  * language as the full-page 3D background (spec §41: one animation
  * language across the site), just scaled down to frame a single object.
  */
-export default function OrbitRings({ accent = '#6e56cf' }) {
+export default function OrbitRings({ accent = '#6e56cf', scale = 1 }) {
   const rings = useMemo(
     () => [
-      { radius: 1.75, tilt: { x: 1.3, y: 0.15 }, speed: 0.12, color: accent, opacity: 0.55 },
-      { radius: 2.05, tilt: { x: 1.45, y: -0.25 }, speed: -0.08, color: '#f4f4f4', opacity: 0.16 },
-      { radius: 2.3, tilt: { x: 1.15, y: 0.4 }, speed: 0.06, color: accent, opacity: 0.22 },
+      { radius: 1.64 * scale, tilt: { x: 1.3, y: 0.15 }, speed: 0.12, color: accent, opacity: 0.55, thickness: 0.012 * scale },
+      { radius: 1.88 * scale, tilt: { x: 1.45, y: -0.25 }, speed: -0.08, color: '#f4f4f4', opacity: 0.16, thickness: 0.012 * scale },
+      { radius: 2.08 * scale, tilt: { x: 1.15, y: 0.4 }, speed: 0.06, color: accent, opacity: 0.22, thickness: 0.012 * scale },
     ],
-    [accent],
+    [accent, scale],
   )
 
   const dots = useMemo(
     () => [
-      { radius: 1.75, tilt: rings[0].tilt, speed: 0.5, offset: 0, color: accent },
-      { radius: 1.75, tilt: rings[0].tilt, speed: 0.5, offset: Math.PI, color: '#f4f4f4' },
-      { radius: 2.3, tilt: rings[2].tilt, speed: -0.32, offset: Math.PI / 2, color: '#f4f4f4' },
+      { radius: 1.64 * scale, tilt: rings[0].tilt, speed: 0.5, offset: 0, color: accent, size: 0.035 * scale },
+      { radius: 1.64 * scale, tilt: rings[0].tilt, speed: 0.5, offset: Math.PI, color: '#f4f4f4', size: 0.035 * scale },
+      { radius: 2.08 * scale, tilt: rings[2].tilt, speed: -0.32, offset: Math.PI / 2, color: '#f4f4f4', size: 0.035 * scale },
     ],
-    [rings, accent],
+    [rings, accent, scale],
   )
 
   return (

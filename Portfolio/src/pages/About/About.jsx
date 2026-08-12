@@ -26,9 +26,9 @@ const FOCUS = ['Full-stack MERN applications', 'AI API integration', 'Creative, 
 const HEADLINE = ["I'M A DEVELOPER", 'WHO CARES ABOUT', 'HOW SOFTWARE', 'FEELS.']
 const BACKGROUND_TEXT = [
   'I started with vanilla JavaScript and the DOM before ever touching a framework —',
-  'which is still how I debug React apps today. From there: GSAP-driven interfaces,',
-  'the React ecosystem, and now full-stack MERN applications wired to real, paid',
-  'third-party AI APIs behind an authenticated backend.',
+  'which is still how I debug React apps today. That led to a frontend internship at',
+  'Springer Capital, and now a Software Developer role at Unyfer Inc., shipping',
+  'features for a live product used by 10,000+ people, alongside AI-powered side projects.',
 ]
 
 export default function About() {

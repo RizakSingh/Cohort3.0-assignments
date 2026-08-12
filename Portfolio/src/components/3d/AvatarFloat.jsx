@@ -9,15 +9,11 @@ function StaticAvatar({ avatarSrc, accent }) {
   return (
     <div className="relative flex aspect-square w-full items-center justify-center">
       <div
-        className="absolute inset-0 rounded-full opacity-60 blur-2xl"
+        className="absolute inset-0 rounded-full opacity-50 blur-3xl"
         style={{ background: `radial-gradient(circle, ${accent}44, transparent 70%)` }}
       />
-      <div className="animate-float relative aspect-square w-[72%] rounded-full" style={{ animationDuration: '7s' }}>
-        <div
-          className="absolute inset-0 rounded-full border"
-          style={{ borderColor: `${accent}55` }}
-        />
-        <img src={avatarSrc} alt="" className="h-full w-full rounded-full object-contain" />
+      <div className="animate-float-in-place relative w-full" style={{ animationDuration: '7s' }}>
+        <img src={avatarSrc} alt="" className="h-full w-full object-contain" />
       </div>
     </div>
   )
