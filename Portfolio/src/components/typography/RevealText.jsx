@@ -14,6 +14,7 @@ export default function RevealText({
   lineClassName = '',
   delay = 0,
   stagger = 0.09,
+  immediate = false,
   ...rest
 }) {
   const linesRef = useRef([])
@@ -25,8 +26,9 @@ export default function RevealText({
       delay,
       stagger,
       start: 'top 88%',
+      immediate,
     })
-  }, [lines, delay, stagger])
+  }, [lines, delay, stagger, immediate])
 
   return (
     <Tag ref={scope} className={className} {...rest}>

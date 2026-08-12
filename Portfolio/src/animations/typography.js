@@ -8,37 +8,26 @@ gsap.registerPlugin(ScrollTrigger)
  * Used for every heading/paragraph reveal across the site — one implementation,
  * reused everywhere per the animation-hierarchy rule (spec §41).
  */
-export function revealLines(lines, { delay = 0, stagger = 0.09, trigger, start = 'top 85%' } = {}) {
+export function revealLines(lines, { delay = 0, stagger = 0.09, trigger, start = 'top 85%', immediate = false } = {}) {
   if (!lines || !lines.length) return null
 
   gsap.set(lines, { yPercent: 110, opacity: 0 })
 
-  const tween = gsap.to(lines, {
+  return gsap.to(lines, {
     yPercent: 0,
     opacity: 1,
     duration: 1.1,
     ease: 'power4.out',
     stagger,
     delay,
-    scrollTrigger: trigger
-      ? { trigger, start, once: true }
-      : undefined,
+    // `immediate: true` skips ScrollTrigger entirely — for content that's
+    // already on screen at load (the hero), gating the reveal behind a
+    // ScrollTrigger is unnecessary and fragile: React StrictMode's dev-only
+    // mount→cleanup→remount cycle kills and recreates a ScrollTrigger on
+    // the same element within one tick, and the recreated one can end up
+    // never firing. A plain delayed tween has no such failure mode.
+    scrollTrigger: !immediate && trigger ? { trigger, start, once: true } : undefined,
   })
-
-  if (typeof window !== 'undefined') {
-    window.__debugTween = tween
-    setTimeout(() => {
-      console.log('[DEBUG tween state]', {
-        progress: tween.progress(),
-        paused: tween.paused(),
-        st: tween.scrollTrigger
-          ? { progress: tween.scrollTrigger.progress, isActive: tween.scrollTrigger.isActive, start: tween.scrollTrigger.start, end: tween.scrollTrigger.end }
-          : 'no scrollTrigger',
-      })
-    }, 3000)
-  }
-
-  return tween
 }
 
 /**

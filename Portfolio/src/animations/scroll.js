@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
  * (cards, list items, paragraphs) — the lowest tier of the animation
  * hierarchy in spec §41, kept simple and cheap to run in bulk.
  */
-export function staggerReveal(targets, { trigger, start = 'top 88%', stagger = 0.08, y = 40, delay = 0 } = {}) {
+export function staggerReveal(targets, { trigger, start = 'top 88%', stagger = 0.08, y = 40, delay = 0, immediate = false } = {}) {
   if (!targets || (Array.isArray(targets) && !targets.length)) return null
 
   gsap.set(targets, { y, opacity: 0 })
@@ -19,11 +19,10 @@ export function staggerReveal(targets, { trigger, start = 'top 88%', stagger = 0
     ease: 'power3.out',
     stagger,
     delay,
-    scrollTrigger: {
-      trigger: trigger || targets,
-      start,
-      once: true,
-    },
+    // See revealLines() in animations/typography.js for why above-the-fold
+    // content should skip ScrollTrigger entirely rather than rely on its
+    // "already in view" auto-fire behavior.
+    scrollTrigger: immediate ? undefined : { trigger: trigger || targets, start, once: true },
   })
 }
 

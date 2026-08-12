@@ -17,6 +17,7 @@ export default function ShrinkHeading({
   delay = 0,
   endScale = 0.55,
   end = '+=120%',
+  immediate = false,
 }) {
   const wrapperRef = useRef(null)
 
@@ -36,6 +37,7 @@ export default function ShrinkHeading({
         as="h1"
         lines={lines}
         delay={delay}
+        immediate={immediate}
         className={`font-display font-semibold uppercase leading-[0.92] tracking-tight text-text ${sizes[size]} ${className}`}
         lineClassName={lineClassName}
       />

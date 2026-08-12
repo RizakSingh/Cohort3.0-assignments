@@ -36,13 +36,11 @@ export default function Hero() {
   const metaDelay = skipDelay ? 0 : META_DELAY
 
   const scope = useGsap(() => {
-    staggerReveal([badgeRef.current], { trigger: scope.current, start: 'top 100%', delay: badgeDelay })
-    staggerReveal([metaRef.current, cueRef.current], {
-      trigger: scope.current,
-      start: 'top 100%',
-      stagger: 0.12,
-      delay: metaDelay,
-    })
+    // Hero content is always on screen at load — it never needs
+    // ScrollTrigger to know when to reveal, just a delay. See revealLines()
+    // for why gating this behind ScrollTrigger is actively fragile here.
+    staggerReveal([badgeRef.current], { delay: badgeDelay, immediate: true })
+    staggerReveal([metaRef.current, cueRef.current], { stagger: 0.12, delay: metaDelay, immediate: true })
   }, [])
 
   return (
@@ -64,6 +62,7 @@ export default function Hero() {
           delay={headingDelay}
           triggerRef={scope}
           end="+=140%"
+          immediate
         />
 
         <div ref={metaRef} className="mt-10 flex flex-col gap-4 md:mt-14 md:flex-row md:items-end md:justify-between">
