@@ -123,12 +123,21 @@ export default function ProjectCarousel({ projects }) {
       velocity: 0,
     }
     scheduleIdleResume()
-    perspectiveRef.current?.setPointerCapture?.(e.pointerId)
   }
 
   const onPointerMove = (e) => {
     if (!drag.current.active) return
     const dx = e.clientX - drag.current.startX
+
+    // Capture is deferred until real movement is confirmed, not set on
+    // pointerdown itself — capturing immediately redirects the eventual
+    // pointerup (and the click derived from it) to this container instead
+    // of whatever card button is under the cursor, silently swallowing
+    // every click. A plain tap never captures, so it hits the button normally.
+    if (!drag.current.captured && Math.abs(dx) > 3) {
+      drag.current.captured = true
+      perspectiveRef.current?.setPointerCapture?.(e.pointerId)
+    }
 
     const now = performance.now()
     const dt = Math.max(1, now - drag.current.lastT)
