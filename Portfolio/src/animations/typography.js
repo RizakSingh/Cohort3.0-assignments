@@ -25,6 +25,19 @@ export function revealLines(lines, { delay = 0, stagger = 0.09, trigger, start =
       : undefined,
   })
 
+  if (typeof window !== 'undefined') {
+    window.__debugTween = tween
+    setTimeout(() => {
+      console.log('[DEBUG tween state]', {
+        progress: tween.progress(),
+        paused: tween.paused(),
+        st: tween.scrollTrigger
+          ? { progress: tween.scrollTrigger.progress, isActive: tween.scrollTrigger.isActive, start: tween.scrollTrigger.start, end: tween.scrollTrigger.end }
+          : 'no scrollTrigger',
+      })
+    }, 3000)
+  }
+
   return tween
 }
 
